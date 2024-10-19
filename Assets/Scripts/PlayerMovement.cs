@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
+
 public class PlayerMovement : MonoBehaviour
 {
 
@@ -10,16 +11,21 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Rigidbody rb;
 
     float horizontalInput;
-    [SerializeField] float horizontalMultiplier = 2;
     public float speedIncreasePerPoint = 0.1f;
     [SerializeField] float jumpForce = 600f;
     [SerializeField] LayerMask groundMask;
+    public GameObject RestartButton;
+    public GameObject QuitButton;
+    private void Awake(){
+        RestartButton.SetActive(false);
+        QuitButton.SetActive(false);
+    }
     private void FixedUpdate(){
         if(!alive){
             return;
         }
         Vector3 forwardMove = transform.forward * speed * Time.fixedDeltaTime;
-        Vector3 horizontalMove = transform.right * horizontalInput * speed * Time.fixedDeltaTime * 2;
+        Vector3 horizontalMove = transform.right * horizontalInput * 12 * Time.fixedDeltaTime * 2;
         rb.MovePosition(rb.position + forwardMove + horizontalMove);
     }
     // Update is called once per frame
@@ -35,10 +41,11 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Die(){
         alive = false;
-        Invoke("Restart",2);
+        RestartButton.SetActive(true);
+        QuitButton.SetActive(true);
     }
 
-    void Restart(){
+    public void Restart(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
