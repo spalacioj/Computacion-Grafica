@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc45acb0f35bc734d9eccdc510e1cdb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 6269612566153847427, guid: 30d4bf389a619bd4cb44f2d66edab1f8, type: 3}
+  obstaclePrefab: {fileID: 3694531108334075244, guid: 1588f5ae68ee1a443a69926ffed19d1d, type: 3}
   coinPrefab: {fileID: 593322502397339804, guid: 68c08b4db5d915343ad28c9fcdf9dd9e, type: 3}
-  tallObstaclePrefab: {fileID: 6269612566153847427, guid: 8627e4d70f224df418cfc347d8831f19, type: 3}
+  tallObstaclePrefab: {fileID: 2592055358231908695, guid: 92257c8c5c43d5643ab01c300c13df05, type: 3}
   tallObstacleChance: 0.2

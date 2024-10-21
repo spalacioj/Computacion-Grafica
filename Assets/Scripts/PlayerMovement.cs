@@ -50,10 +50,10 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Jump(){
-        float height = GetComponent<Collider>().bounds.size.y;
-        bool isInGround = Physics.Raycast(transform.position, Vector3.down, (height / 2) + 0.1f, groundMask);
+        //float height = GetComponent<Collider>().bounds.size.y;
+        bool isInGround = Physics.Raycast(transform.position + Vector3.up * 0.1f, Vector3.down, 0.2f, groundMask);
         if(isInGround){
-        rb.AddForce(Vector3.up * jumpForce);
-        }
+            rb.AddForce(Vector3.up * jumpForce);
+        } 
     }
 }
