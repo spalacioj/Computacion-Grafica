@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 
 
@@ -16,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask groundMask;
     public GameObject RestartButton;
     public GameObject QuitButton;
+    public Animator animator;
+    
     private void Awake(){
         RestartButton.SetActive(false);
         QuitButton.SetActive(false);
@@ -37,10 +40,11 @@ public class PlayerMovement : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Space)){
             Jump();
-        }
+        } 
     }
     public void Die(){
         alive = false;
+        animator.SetBool("Alive", false);
         RestartButton.SetActive(true);
         QuitButton.SetActive(true);
     }
@@ -52,8 +56,9 @@ public class PlayerMovement : MonoBehaviour
     void Jump(){
         //float height = GetComponent<Collider>().bounds.size.y;
         bool isInGround = Physics.Raycast(transform.position + Vector3.up * 0.1f, Vector3.down, 0.2f, groundMask);
-        if(isInGround){
-            rb.AddForce(Vector3.up * jumpForce);
+        if(isInGround){         
+            rb.AddForce(Vector3.up * jumpForce);         
         } 
     }
+    
 }
