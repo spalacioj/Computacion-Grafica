@@ -10,11 +10,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Text scoreText;
     [SerializeField] PlayerMovement playerMovement;
-
+    private AudioSource coinPickup;
     public void IncrementScore(){
         score++;
         scoreText.text = "Score: " + score;
         playerMovement.speed += playerMovement.speedIncreasePerPoint;
+        coinPickup.Play();
     }
     // Start is called before the first frame update
     private void Awake(){
@@ -22,7 +23,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        
+        coinPickup = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

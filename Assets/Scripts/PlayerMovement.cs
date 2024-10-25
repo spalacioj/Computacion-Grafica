@@ -18,10 +18,13 @@ public class PlayerMovement : MonoBehaviour
     public GameObject RestartButton;
     public GameObject QuitButton;
     public Animator animator;
+    public GameObject bgMusic;
+    private AudioSource audioSource;
     
     private void Awake(){
         RestartButton.SetActive(false);
         QuitButton.SetActive(false);
+        audioSource = bgMusic.GetComponent<AudioSource>();
     }
     private void FixedUpdate(){
         if(!alive){
@@ -47,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("Alive", false);
         RestartButton.SetActive(true);
         QuitButton.SetActive(true);
+        audioSource.Stop();
     }
 
     public void Restart(){
